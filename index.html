@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { width:1122px; }
+
+body {
+  width:1122px;
+  font-family: Arial, Helvetica, sans-serif;
+  display:flex;
+  flex-direction:column;
+}
+
+/* TOP BAR */
+.topbar {
+  width:100%;
+  background:#111518;
+  padding:7px 0;
+  text-align:center;
+  font-size:8.5px;
+  letter-spacing:4px;
+  color:#6B7A8D;
+  text-transform:uppercase;
+  border-bottom:1px solid #1A1F24;
+  flex-shrink:0;
+}
+
+.cols {
+  display:flex;
+  width:1122px;
+  flex:1;
+}
+
+/* ════════════════════════════════
+   LEFT COLUMN — 220px GOLD
+   ════════════════════════════════ */
+.cl {
+  width:220px;
+  flex-shrink:0;
+  background:#C8A84B;
+  padding:20px 17px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+.cl::after {
+  content:'';
+  position:absolute;
+  bottom:-55px; right:-55px;
+  width:180px; height:180px;
+  border:32px solid rgba(10,13,15,0.1);
+  border-radius:50%;
+}
+
+.logo-name { font-size:42px; font-weight:900; color:#0A0D0F; letter-spacing:3px; line-height:1; }
+.logo-sub  { font-size:7.5px; letter-spacing:1px; color:rgba(10,13,15,0.55); text-transform:uppercase; margin-top:4px; line-height:1.5; }
+
+.sep { height:1px; background:rgba(10,13,15,0.2); margin:16px 0; }
+
+.co2wrap { text-align:center; padding:6px 0; }
+.co2wrap .n { font-size:58px; font-weight:900; color:#0A0D0F; line-height:1; }
+.co2wrap .u { font-size:12px; font-weight:700; color:#0A0D0F; letter-spacing:2px; }
+.co2wrap .l { font-size:7.5px; color:rgba(10,13,15,0.6); text-transform:uppercase; letter-spacing:1px; margin-top:3px; line-height:1.5; }
+
+.sep2 { height:1px; background:rgba(10,13,15,0.2); margin:14px 0; }
+
+.pills { display:flex; flex-direction:column; gap:7px; }
+.pill { background:rgba(10,13,15,0.12); padding:8px 9px; display:flex; gap:7px; align-items:flex-start; }
+.pill .pi { font-size:13px; flex-shrink:0; line-height:1.4; }
+.pill .pt { font-size:8.5px; font-weight:700; color:#0A0D0F; }
+.pill .ps { font-size:7.5px; color:rgba(10,13,15,0.6); margin-top:1px; }
+
+.sep3 { height:1px; background:rgba(10,13,15,0.2); margin:16px 0; }
+
+.cred-box {
+  background:rgba(10,13,15,0.15);
+  padding:9px 10px;
+  font-size:8px;
+  font-weight:700;
+  color:#0A0D0F;
+  line-height:1.7;
+}
+
+/* CONTACT BLOCK — bottom of left col */
+.left-contact {
+  margin-top:auto;
+  padding-top:16px;
+}
+.left-contact .lc-title {
+  font-size:7.5px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(10,13,15,0.5);
+  margin-bottom:8px;
+  font-weight:700;
+}
+.left-contact .lc-item {
+  display:flex;
+  gap:6px;
+  align-items:center;
+  margin-bottom:5px;
+  font-size:8px;
+  color:#0A0D0F;
+  font-weight:600;
+}
+.left-contact .lc-item .lc-icon {
+  font-size:10px;
+  width:14px;
+  flex-shrink:0;
+}
+.left-contact .lc-item a {
+  color:#0A0D0F;
+  text-decoration:none;
+}
+
+/* ════════════════════════════════
+   CENTER COLUMN
+   ════════════════════════════════ */
+.cc {
+  flex:1;
+  background:#0A0D0F;
+  padding:20px 22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  border-right:1px solid #1A1F24;
+}
+
+.hl-sm  { font-size:10px; color:#6B7A8D; }
+.hl-lg  { font-size:18px; font-weight:900; color:#C8A84B; line-height:1.1; }
+.hl-body{ font-size:8.5px; color:#6B7A8D; line-height:1.6; margin-top:5px; }
+
+.co2box {
+  background:#0f1a0d;
+  border-top:2px solid #C8A84B;
+  padding:10px 13px 9px;
+}
+.bttl { font-size:7.5px; letter-spacing:2px; color:#C8A84B; text-transform:uppercase; margin-bottom:8px; }
+.co2r { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+.co2r .rl { font-size:8.5px; color:#6B7A8D; }
+.co2r .rv { font-size:9px; font-weight:700; color:#F5F7FA; }
+.co2r.g .rl, .co2r.g .rv { color:#2ECC8A; }
+.co2tot {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:8px; margin-top:2px; border-top:1px solid #C8A84B;
+}
+.co2tot .tl { font-size:9px; font-weight:700; color:#C8A84B; letter-spacing:1px; }
+.co2tot .tv { font-size:16px; font-weight:900; color:#C8A84B; }
+
+.flow { display:flex; gap:3px; }
+.step { flex:1; background:#111518; padding:9px 7px; position:relative; }
+.step+.step::before {
+  content:'›';
+  position:absolute; left:-5px; top:50%; transform:translateY(-50%);
+  color:#C8A84B; font-size:12px; font-weight:700;
+}
+.sn { font-size:18px; font-weight:900; color:rgba(200,168,75,0.15); line-height:1; }
+.st { font-size:7px; font-weight:700; color:#C8A84B; letter-spacing:0.5px; text-transform:uppercase; margin:3px 0 2px; }
+.sb { font-size:7px; color:#6B7A8D; line-height:1.4; }
+
+.cats-title { font-size:7.5px; letter-spacing:3px; color:#C8A84B; text-transform:uppercase; margin-bottom:5px; }
+.cats { display:flex; gap:3px; }
+.cat { flex:1; background:#111518; padding:10px 8px; border-top:2px solid #C8A84B; }
+.catl  { font-size:18px; font-weight:900; color:#C8A84B; line-height:1; }
+.catst { font-size:7.5px; font-weight:700; color:#F5F7FA; text-transform:uppercase; margin:4px 0 3px; }
+.catd  { font-size:7.5px; color:#6B7A8D; margin-bottom:4px; }
+.catsp { font-size:8px; font-weight:700; color:#2ECC8A; }
+
+/* BOTTOM TAGLINE — fills remaining space in center */
+.center-bottom {
+  margin-top:auto;
+  background:#111518;
+  border-left:3px solid #C8A84B;
+  padding:14px 16px;
+}
+.center-bottom blockquote {
+  font-size:11px;
+  font-weight:700;
+  color:#C8A84B;
+  line-height:1.5;
+  font-style:italic;
+}
+.center-bottom cite {
+  font-size:7.5px;
+  color:#6B7A8D;
+  font-style:normal;
+  display:block;
+  margin-top:6px;
+  letter-spacing:1px;
+}
+
+/* ════════════════════════════════
+   RIGHT COLUMN — 229px DARK
+   ════════════════════════════════ */
+.cr {
+  width:229px;
+  flex-shrink:0;
+  background:#1A1F24;
+  padding:20px 17px;
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+}
+
+.rt  { font-size:11px; color:#F5F7FA; }
+.rtb { font-size:16px; font-weight:900; color:#C8A84B; line-height:1.1; }
+.rsub{ font-size:7.5px; color:#6B7A8D; line-height:1.55; margin-top:5px; }
+
+.esgl { font-size:7px; letter-spacing:3px; color:#C8A84B; text-transform:uppercase; margin-bottom:5px; }
+.esgi { display:flex; gap:7px; align-items:flex-start; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.chk  { color:#2ECC8A; font-size:9px; font-weight:700; flex-shrink:0; margin-top:1px; }
+.eit  { font-size:7.5px; font-weight:700; color:#F5F7FA; }
+.eis  { font-size:7px; color:#6B7A8D; }
+
+.eql  { font-size:7px; letter-spacing:3px; color:#C8A84B; text-transform:uppercase; margin-bottom:5px; }
+.eqi  { display:flex; gap:8px; align-items:center; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:8px; color:#E8ECF0; line-height:1.4; }
+.ic   { font-size:15px; flex-shrink:0; width:22px; text-align:center; }
+
+/* CTA fills bottom of right col */
+.cta {
+  background:#C8A84B;
+  padding:16px 13px;
+  text-align:center;
+  margin-top:auto;
+}
+.cta h3 { font-size:12px; font-weight:900; color:#0A0D0F; letter-spacing:2px; margin-bottom:5px; }
+.cta p  { font-size:8px; color:rgba(10,13,15,0.7); line-height:1.6; margin-bottom:8px; }
+.cta .em{ font-size:9px; font-weight:700; color:#0A0D0F; letter-spacing:0.5px; }
+
+/* BOTTOM BAR */
+.bottombar {
+  width:100%;
+  background:#111518;
+  padding:8px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-top:1px solid rgba(200,168,75,0.15);
+  flex-shrink:0;
+}
+.bottombar .bb-left {
+  font-size:8px;
+  color:#6B7A8D;
+  letter-spacing:1px;
+}
+.bottombar .bb-right {
+  display:flex;
+  gap:24px;
+  font-size:8px;
+  color:#6B7A8D;
+}
+.bottombar .bb-right a { color:#C8A84B; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">CSPM &nbsp;·&nbsp; Brochure Comercial &nbsp;·&nbsp; v4 &nbsp;·&nbsp; Circularidad Solar &amp; Photovoltaic Management</div>
+
+<div class="cols">
+
+  <!-- ══ LEFT ══ -->
+  <div class="cl">
+    <div>
+      <div class="logo-name">CSPM</div>
+      <div class="logo-sub">Circularidad Solar<br>&amp; Photovoltaic Management</div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="co2wrap">
+      <div class="n">2.74</div>
+      <div class="u">TON CO&#8322;eq</div>
+      <div class="l">evitadas por panel<br>ciclo de vida completo</div>
+    </div>
+
+    <div class="sep2"></div>
+
+    <div class="pills">
+      <div class="pill">
+        <div class="pi">&#9889;</div>
+        <div><div class="pt">Energía real</div><div class="ps">Paneles certificados IEC, listos para generar</div></div>
+      </div>
+      <div class="pill">
+        <div class="pi">&#127807;</div>
+        <div><div class="pt">CO&#8322; certificado</div><div class="ps">4 componentes · 4 fuentes auditables</div></div>
+      </div>
+      <div class="pill">
+        <div class="pi">&#128202;</div>
+        <div><div class="pt">ESG auditable</div><div class="ps">GRI · SASB · Scope 2 &amp; 3 · TCFD</div></div>
+      </div>
+      <div class="pill">
+        <div class="pi">&#129309;</div>
+        <div><div class="pt">Impacto social</div><div class="ps">Licencia social con activos verificables</div></div>
+      </div>
+    </div>
+
+    <div class="sep3"></div>
+
+    <div class="cred-box">&#10003; Único operador RAEE-FV habilitado<br>Subsec. Medio Ambiente · Provincia de San Juan</div>
+
+    <div class="left-contact">
+      <div class="lc-title">Contacto</div>
+      <div class="lc-item"><span class="lc-icon">&#128222;</span> +54 9 11 3563 1737</div>
+      <div class="lc-item"><span class="lc-icon">&#128231;</span> ggoldercspm@gmail.com</div>
+      <div class="lc-item"><span class="lc-icon">&#127760;</span> <a href="https://cspm-landing.vercel.app">cspm-landing.vercel.app</a></div>
+      <div class="lc-item"><span class="lc-icon">&#128247;</span> @cspm_group</div>
+    </div>
+  </div>
+
+  <!-- ══ CENTER ══ -->
+  <div class="cc">
+    <div>
+      <div class="hl-sm">De residuo fotovoltaico</div>
+      <div class="hl-lg">a 2.74 toneladas de CO&#8322;eq evitado</div>
+      <div class="hl-body">CSPM recupera paneles de parques solares en retiro y los entrega con un análisis de ciclo de vida completo: fabricación + transporte + disposición final + generación limpia durante 10 años. Cada panel viene con documentación ESG lista para auditores internacionales.</div>
+    </div>
+
+    <div class="co2box">
+      <div class="bttl">Desglose del CO&#8322;eq evitado por panel (Cat. A)</div>
+      <div class="co2r"><span class="rl">E1 — Fabricación evitada (Hanwha Q CELLS LCA certificado)</span><span class="rv">217 kg</span></div>
+      <div class="co2r"><span class="rl">E2 — Transporte evitado (IMO GHG Study 2020 + GLEC Framework)</span><span class="rv">5 kg</span></div>
+      <div class="co2r"><span class="rl">E3 — Disposición final evitada (EPJ Photovoltaics 2024)</span><span class="rv">21 kg</span></div>
+      <div class="co2r g"><span class="rl">E4 — Generación limpia 10 años (Sec. Energía Argentina · 0.4507 kg CO&#8322;/kWh)</span><span class="rv">2,500 kg</span></div>
+      <div class="co2tot">
+        <span class="tl">TOTAL CERTIFICADO · CATEGORÍA A · SAN JUAN</span>
+        <span class="tv">2,743 KG</span>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="step"><div class="sn">01</div><div class="st">Recepción</div><div class="sb">Parques solares en retiro.<br>Trazabilidad de origen.</div></div>
+      <div class="step"><div class="sn">02</div><div class="st">Clasificación</div><div class="sb">Sistema propio CSPM.<br>Categoría A, B o C.</div></div>
+      <div class="step"><div class="sn">03</div><div class="st">Diagnóstico</div><div class="sb">Herramienta propia.<br>Protocolos IEC automáticos.</div></div>
+      <div class="step"><div class="sn">04</div><div class="st">Recuperación</div><div class="sb">Según categoría.<br>Estándares TPM + ISO.</div></div>
+      <div class="step"><div class="sn">05</div><div class="st">Entrega</div><div class="sb">Panel + CO&#8322; certificado<br>+ documentación ESG.</div></div>
+    </div>
+
+    <div>
+      <div class="cats-title">Sistema de categorías CSPM</div>
+      <div class="cats">
+        <div class="cat">
+          <div class="catl">CAT A</div>
+          <div class="catst">Daño Superficial / Vidrio</div>
+          <div class="catd">Mayor capacidad residual. Proceso más rápido.</div>
+          <div class="catsp">&#8805; 80% potencia · ~2.74 t CO&#8322;eq</div>
+        </div>
+        <div class="cat">
+          <div class="catl">CAT B</div>
+          <div class="catst">Daño Eléctrico Leve</div>
+          <div class="catd">Recuperación técnica específica certificada.</div>
+          <div class="catsp">70–79% potencia · ~2.4–2.7 t CO&#8322;eq</div>
+        </div>
+        <div class="cat">
+          <div class="catl">CAT C</div>
+          <div class="catst">Daño Complejo</div>
+          <div class="catd">Proceso completo IEC. Igualmente certificado.</div>
+          <div class="catsp">60–69% potencia · ~2.1–2.4 t CO&#8322;eq</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-bottom">
+      <blockquote>"Transformamos residuos fotovoltaicos en activos ambientales medibles, certificados y listos para tus reportes ESG."</blockquote>
+      <cite>— CSPM · Circularidad Solar &amp; Photovoltaic Management · San Juan, Argentina</cite>
+    </div>
+  </div>
+
+  <!-- ══ RIGHT ══ -->
+  <div class="cr">
+    <div>
+      <div class="rt">Lo que podés</div>
+      <div class="rtb">reportar mañana</div>
+      <div class="rsub">Documentación generada automáticamente por el sistema CSPM. Lista para auditores, bancos de desarrollo y fondos institucionales desde el día de entrega.</div>
+    </div>
+
+    <div>
+      <div class="esgl">Estándares compatibles</div>
+      <div class="esgi"><div class="chk">&#10003;</div><div><div class="eit">GRI 306 — Residuos</div><div class="eis">Origen, tratamiento y destino RAEE-FV</div></div></div>
+      <div class="esgi"><div class="chk">&#10003;</div><div><div class="eit">SASB EM-MM-150a.1</div><div class="eis">Estándar SASB específico para industria minera</div></div></div>
+      <div class="esgi"><div class="chk">&#10003;</div><div><div class="eit">Scope 3 — 243 kg CO&#8322;eq inmediato</div><div class="eis">Fabricación + transporte + disposición evitada</div></div></div>
+      <div class="esgi"><div class="chk">&#10003;</div><div><div class="eit">Scope 2 — 2,500 kg CO&#8322;eq en 10 años</div><div class="eis">Generación limpia vs. red eléctrica argentina</div></div></div>
+      <div class="esgi"><div class="chk">&#10003;</div><div><div class="eit">TCFD · ISO 14064-1</div><div class="eis">Transición energética e inventario GEI</div></div></div>
+    </div>
+
+    <div>
+      <div class="eql">2.74 t CO&#8322;eq equivale a</div>
+      <div class="eqi"><div class="ic">&#9992;</div><div>1 vuelo Buenos Aires ↔ Europa ida y vuelta por persona</div></div>
+      <div class="eqi"><div class="ic">&#128663;</div><div>17.000 km recorridos en auto a nafta</div></div>
+      <div class="eqi"><div class="ic">&#127968;</div><div>16 meses del consumo eléctrico de un hogar argentino</div></div>
+    </div>
+
+    <div class="cta">
+      <h3>Propuesta en 48hs</h3>
+      <p>Categoría · Capacidad de generación<br>CO&#8322;eq total certificado<br>Aplicaciones para tu operación</p>
+      <div class="em">&#128222; +54 9 11 3563 1737</div><br>
+      <div class="em">ggoldercspm@gmail.com</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bottombar">
+  <div class="bb-left">&#10003; Único operador RAEE-FV habilitado en San Juan · Subsecretaría de Medio Ambiente y Desarrollo Sustentable</div>
+  <div class="bb-right">
+    <span>&#127760; <a href="https://cspm-landing.vercel.app">cspm-landing.vercel.app</a></span>
+    <span>&#128247; @cspm_group</span>
+    <span>ggoldercspm@gmail.com</span>
+  </div>
+</div>
+
+</body>
+</html>
